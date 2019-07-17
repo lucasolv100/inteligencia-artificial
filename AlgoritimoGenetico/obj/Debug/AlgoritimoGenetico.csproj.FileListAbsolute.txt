@@ -10,3 +10,15 @@ D:\Estudos\AlgoritimoGenetico\AlgoritimoGenetico\AlgoritimoGenetico\obj\Debug\Al
 D:\Estudos\AlgoritimoGenetico\AlgoritimoGenetico\AlgoritimoGenetico\bin\Debug\ZedGraph.dll
 D:\Estudos\AlgoritimoGenetico\AlgoritimoGenetico\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.Form1.resources
 D:\Estudos\AlgoritimoGenetico\AlgoritimoGenetico\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csproj.CopyComplete
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\AlgoritimoGenetico.exe.config
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\AlgoritimoGenetico.exe
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\AlgoritimoGenetico.pdb
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\ZedGraph.dll
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csprojAssemblyReference.cache
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.Form1.resources
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.Properties.Resources.resources
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csproj.GenerateResource.cache
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csproj.CoreCompileInputs.cache
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csproj.CopyComplete
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.exe
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.pdb

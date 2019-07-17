@@ -28,30 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.txtIndividual = new System.Windows.Forms.RichTextBox();
+            this.btnGenerate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // zedGraphControl1
+            // txtIndividual
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(12, 12);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.ScrollGrace = 0D;
-            this.zedGraphControl1.ScrollMaxX = 0D;
-            this.zedGraphControl1.ScrollMaxY = 0D;
-            this.zedGraphControl1.ScrollMaxY2 = 0D;
-            this.zedGraphControl1.ScrollMinX = 0D;
-            this.zedGraphControl1.ScrollMinY = 0D;
-            this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(384, 278);
-            this.zedGraphControl1.TabIndex = 0;
+            this.txtIndividual.Location = new System.Drawing.Point(12, 12);
+            this.txtIndividual.Name = "txtIndividual";
+            this.txtIndividual.Size = new System.Drawing.Size(482, 81);
+            this.txtIndividual.TabIndex = 0;
+            this.txtIndividual.Text = "";
+            // 
+            // btnGenerate
+            // 
+            this.btnGenerate.Location = new System.Drawing.Point(541, 300);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(102, 51);
+            this.btnGenerate.TabIndex = 1;
+            this.btnGenerate.Text = "Gerar";
+            this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.BtnGenerate_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 379);
-            this.Controls.Add(this.zedGraphControl1);
+            this.ClientSize = new System.Drawing.Size(655, 363);
+            this.Controls.Add(this.btnGenerate);
+            this.Controls.Add(this.txtIndividual);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -60,7 +65,8 @@
 
         #endregion
 
-        private ZedGraph.ZedGraphControl zedGraphControl1;
+        private System.Windows.Forms.RichTextBox txtIndividual;
+        private System.Windows.Forms.Button btnGenerate;
     }
 }
 

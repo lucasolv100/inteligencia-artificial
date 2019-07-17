@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AlgoritimoGenetico.Class;
 
 namespace AlgoritimoGenetico
 {
@@ -15,6 +16,12 @@ namespace AlgoritimoGenetico
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void BtnGenerate_Click(object sender, EventArgs e)
+        {
+            var Individual = new Individual();
+            txtIndividual.Text = Individual.PrintIndividual();
         }
     }
 }
