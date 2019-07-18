@@ -100,7 +100,7 @@ namespace AlgoritimoGenetico.Class
                 result = result + (chromosome[i] == false ? "0" : "1");
             }
 
-            result += "    INT:     " + getInt() + "   Apitidão:   " + GetFitness() + "    Porcentagem:      " + GetFitnessPercentage() + "\n";
+            result += "    INT:     " + getInt() + "   Apitidão:   " + GetFitness() + "    Porcentagem:      " + GetFitnessPercentage();
             return result;
         }
     }
