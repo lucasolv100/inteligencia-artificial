@@ -22,3 +22,4 @@ D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGeneti
 D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csproj.CopyComplete
 D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.exe
 D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.pdb
+D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.TesteCrossOver.resources
