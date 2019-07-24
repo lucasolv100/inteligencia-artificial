@@ -13,6 +13,9 @@ namespace AlgoritimoGenetico
 {
     public partial class TesteCrossOver : Form
     {
+        Population pop = new Population();
+        GeneticAlgorithm ag = new GeneticAlgorithm(0.8f, 0.01f);
+
         public TesteCrossOver()
         {
             InitializeComponent();
@@ -20,7 +23,7 @@ namespace AlgoritimoGenetico
 
         private void BtnCrossOver_Click(object sender, EventArgs e)
         {
-            GeneticAlgorithm ag = new GeneticAlgorithm(0.8f, 0);
+            
             Individual ind1 = new Individual();
             Individual ind2 = new Individual();
 
@@ -34,6 +37,10 @@ namespace AlgoritimoGenetico
 
             txtIndCross1.Text = children[0].PrintIndividual();
             txtIndCross2.Text = children[1].PrintIndividual();
+
+            txtPopulation.Text = ag.Execute(pop).PrintPopulation();
+
+            lbMedia.Text = pop.GetPopulationAverage().ToString();
         }
     }
 }

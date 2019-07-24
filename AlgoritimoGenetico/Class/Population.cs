@@ -106,8 +106,11 @@ namespace AlgoritimoGenetico.Class
         public void UpdateValues()
         {
             //calcular o fitness
+            FitnessCalculation();
             //calcular o fitness percent
+            FitnessPercentageCalculation();
             //calcular o range da roleta
+            RangeRouletteCalculation();
         }
 
         public void OrderPopulation()

@@ -37,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtPopulation = new System.Windows.Forms.RichTextBox();
+            this.lbMedia = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtInd1
@@ -69,7 +71,7 @@
             // 
             // btnCrossOver
             // 
-            this.btnCrossOver.Location = new System.Drawing.Point(601, 237);
+            this.btnCrossOver.Location = new System.Drawing.Point(12, 476);
             this.btnCrossOver.Name = "btnCrossOver";
             this.btnCrossOver.Size = new System.Drawing.Size(148, 38);
             this.btnCrossOver.TabIndex = 4;
@@ -113,11 +115,30 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Cross Over 2";
             // 
+            // txtPopulation
+            // 
+            this.txtPopulation.Location = new System.Drawing.Point(12, 236);
+            this.txtPopulation.Name = "txtPopulation";
+            this.txtPopulation.Size = new System.Drawing.Size(1135, 225);
+            this.txtPopulation.TabIndex = 9;
+            this.txtPopulation.Text = "";
+            // 
+            // lbMedia
+            // 
+            this.lbMedia.AutoSize = true;
+            this.lbMedia.Location = new System.Drawing.Point(197, 486);
+            this.lbMedia.Name = "lbMedia";
+            this.lbMedia.Size = new System.Drawing.Size(96, 13);
+            this.lbMedia.TabIndex = 10;
+            this.lbMedia.Text = "Média População: ";
+            // 
             // TesteCrossOver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 281);
+            this.ClientSize = new System.Drawing.Size(1159, 526);
+            this.Controls.Add(this.lbMedia);
+            this.Controls.Add(this.txtPopulation);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -145,5 +166,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox txtPopulation;
+        private System.Windows.Forms.Label lbMedia;
     }
 }

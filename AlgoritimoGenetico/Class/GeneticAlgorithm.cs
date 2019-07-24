@@ -22,13 +22,39 @@ namespace AlgoritimoGenetico.Class
         {
             //Inicio
             //Avaliação da população
-            //selecionar pais para cruzamento
-            //realizar o cruzamento
-            //aplicar a mutação
-            //apagar os velhos membros
+            Population newPopulation = new Population();
+            List<Individual> indBuffer = new List<Individual>();
+
+            for (int i = 0; i < Constants.sizePopulation / 2; i++)
+            {
+                //selecionar pais para cruzamento
+                Individual father = Roulette(population);
+                Individual mother = Roulette(population);
+
+                //realizar o cruzamento
+                Individual[] children = CrossOverIndividual(father, mother);
+
+                //aplicar a mutação
+                Individual firstChild = Mutation(children[0]);
+                Individual secondChild = Mutation(children[1]);
+
+                indBuffer.Add(firstChild);
+                indBuffer.Add(secondChild);
+            }
+
             //inserir novos membros
+            for (int i = 0; i < Constants.sizePopulation; i++)
+            {
+                newPopulation.SetIndividual(i, indBuffer[i]);
+            }
+
+            //apagar os velhos membros
+            indBuffer = null;
+
             //reavaliar a populacao
-            return null;
+            newPopulation.UpdateValues();
+
+            return newPopulation;
 
         }
 
@@ -62,6 +88,33 @@ namespace AlgoritimoGenetico.Class
             }
 
             return newInd;
+        }
+
+        public Individual Mutation(Individual originalInd)
+        {
+            if(Constants.random.NextDouble() <= MutationTax)
+            {
+                int genePosition = Constants.random.Next(0, Constants.sizeChromosome);
+                originalInd.GeneMutation(genePosition);
+                return originalInd;
+            }
+
+            return originalInd;
+        }
+
+        public Individual Roulette(Population population)
+        {
+            double numberDrawn = Constants.random.NextDouble() * 100;
+
+            foreach (Individual ind in population.GetPopulation())
+            {
+                if(numberDrawn >= ind.getRouletteRange()[0] && numberDrawn <= ind.getRouletteRange()[1])
+                {
+                    return ind;
+                }
+            }
+
+            return null;
         }
     }
 }
