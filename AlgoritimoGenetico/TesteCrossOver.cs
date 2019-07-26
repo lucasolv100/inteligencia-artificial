@@ -38,9 +38,11 @@ namespace AlgoritimoGenetico
             txtIndCross1.Text = children[0].PrintIndividual();
             txtIndCross2.Text = children[1].PrintIndividual();
 
-            txtPopulation.Text = ag.Execute(pop).PrintPopulation();
-
+            //evolui a população
+            pop = ag.Execute(pop);
+            txtPopulation.Text = pop.PrintPopulation();
             lbMedia.Text = pop.GetPopulationAverage().ToString();
+
         }
     }
 }
