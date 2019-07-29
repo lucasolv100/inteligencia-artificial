@@ -170,6 +170,7 @@
             this.btnPopulationGenerate.TabIndex = 15;
             this.btnPopulationGenerate.Text = "Gerar População";
             this.btnPopulationGenerate.UseVisualStyleBackColor = true;
+            this.btnPopulationGenerate.Click += new System.EventHandler(this.BtnPopulationGenerate_Click);
             // 
             // btnAGBegin
             // 
