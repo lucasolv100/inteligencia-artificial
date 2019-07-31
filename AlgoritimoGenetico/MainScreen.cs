@@ -127,6 +127,25 @@ namespace AlgoritimoGenetico
                 zedPopulationAverage.Invalidate();
                 zedPopulationAverage.Refresh();
             }
+
+            population.OrderPopulation();
+
+            string worstInds = string.Empty;
+
+            for (int i = 0; i < 10; i++)
+            {
+                worstInds += population.GetPopulation()[i].PrintIndividual() + "\n";
+            }
+
+            string best = string.Empty;
+
+            for (int i = Constants.sizePopulation -1; i > Constants.sizePopulation -11 ; i--)
+            {
+                best += population.GetPopulation()[i].PrintIndividual() + "\n";
+            }
+
+            txtBestIndividuals.Text = best;
+            txtWorstIndividuals.Text = worstInds;
         }
     }
 }
