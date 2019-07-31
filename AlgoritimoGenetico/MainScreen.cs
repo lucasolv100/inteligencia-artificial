@@ -24,8 +24,8 @@ namespace AlgoritimoGenetico
 
         public MainScreen()
         {
-            btnAGBegin.Enabled = false;
             InitializeComponent();
+            btnAGBegin.Enabled = false;
 
             panePopulation = zedPopulation.GraphPane;
             panePopulation.Title.Text = "Evolução";
@@ -80,6 +80,53 @@ namespace AlgoritimoGenetico
             zedPopulation.AxisChange();
             zedPopulation.Invalidate();
             zedPopulation.Refresh();
+        }
+
+        private void BtnAGBegin_Click(object sender, EventArgs e)
+        {
+            double crossOver = double.Parse(txtCrossOverMask.Text);
+            double mutationTax = double.Parse(txtMutation.Text);
+            double evolution = double.Parse(txtEvolution.Text);
+            Console.Write(mutationTax.ToString() + "\n");
+            Console.Write(crossOver.ToString() + "\n");
+            Console.Write(evolution.ToString() + "\n");
+
+            GeneticAlgorithm ga = new GeneticAlgorithm(
+                crossOver,
+                mutationTax
+            );
+
+            for (int i = 0; i < evolution; i++)
+            {
+                population = ga.Execute(population);
+
+                graphicAveragePopulation.Add(i, population.GetPopulationAverage());
+
+                zedPopulationAverage.GraphPane.CurveList.Clear();
+                zedPopulationAverage.GraphPane.GraphObjList.Clear();
+
+                zedPopulation.GraphPane.CurveList.Clear();
+                zedPopulation.GraphPane.GraphObjList.Clear();
+
+                graphicPopulation = new PointPairList();
+
+                for (int j = 0; j < Constants.sizePopulation; j++)
+                {
+                    graphicPopulation.Add(population.GetPopulation()[j].getInt(), population.GetPopulation()[j].GetFitness());
+                }
+
+                LineItem media = paneAveragePopulation.AddCurve("Média", graphicAveragePopulation, Color.Red, SymbolType.None);
+                LineItem func = panePopulation.AddCurve("Função", graphicCurve, Color.Red, SymbolType.None);
+                LineItem inds = panePopulation.AddStick("Individuo", graphicPopulation, Color.Red);
+
+                zedPopulation.AxisChange();
+                zedPopulation.Invalidate();
+                zedPopulation.Refresh();
+
+                zedPopulationAverage.AxisChange();
+                zedPopulationAverage.Invalidate();
+                zedPopulationAverage.Refresh();
+            }
         }
     }
 }

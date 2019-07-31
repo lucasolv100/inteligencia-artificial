@@ -138,7 +138,7 @@
             // txtCrossOverMask
             // 
             this.txtCrossOverMask.Location = new System.Drawing.Point(104, 6);
-            this.txtCrossOverMask.Mask = "0,00";
+            this.txtCrossOverMask.Mask = "0.00";
             this.txtCrossOverMask.Name = "txtCrossOverMask";
             this.txtCrossOverMask.Size = new System.Drawing.Size(44, 20);
             this.txtCrossOverMask.TabIndex = 12;
@@ -147,7 +147,7 @@
             // txtMutation
             // 
             this.txtMutation.Location = new System.Drawing.Point(104, 38);
-            this.txtMutation.Mask = "0,00";
+            this.txtMutation.Mask = "0.00";
             this.txtMutation.Name = "txtMutation";
             this.txtMutation.Size = new System.Drawing.Size(44, 20);
             this.txtMutation.TabIndex = 13;
@@ -180,6 +180,7 @@
             this.btnAGBegin.TabIndex = 16;
             this.btnAGBegin.Text = "Iniciar Algoritmo Genético";
             this.btnAGBegin.UseVisualStyleBackColor = true;
+            this.btnAGBegin.Click += new System.EventHandler(this.BtnAGBegin_Click);
             // 
             // MainScreen
             // 

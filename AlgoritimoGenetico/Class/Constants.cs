@@ -9,7 +9,7 @@ namespace AlgoritimoGenetico.Class
     public abstract class Constants
     {
         static public int sizeChromosome = 9;
-        static public int sizePopulation = 300;
+        static public int sizePopulation = 500;
         static public int functionXSize = (int)Math.Pow(2, sizeChromosome);
         public static Random random = new Random((int)DateTime.Now.Ticks);
 

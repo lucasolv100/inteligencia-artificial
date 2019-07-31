@@ -14,8 +14,8 @@ namespace AlgoritimoGenetico.Class
 
         public GeneticAlgorithm(double crossOverTax, double mutationTax)
         {
-            CrossOverTax = crossOverTax;
-            MutationTax = mutationTax;
+            this.CrossOverTax = crossOverTax;
+            this.MutationTax = mutationTax;
         }
 
         public Population Execute(Population population)
@@ -92,7 +92,7 @@ namespace AlgoritimoGenetico.Class
 
         public Individual Mutation(Individual originalInd)
         {
-            if(Constants.random.NextDouble() <= MutationTax)
+            if(Constants.random.NextDouble() <= this.MutationTax)
             {
                 int genePosition = Constants.random.Next(0, Constants.sizeChromosome);
                 originalInd.GeneMutation(genePosition);
@@ -104,7 +104,7 @@ namespace AlgoritimoGenetico.Class
 
         public Individual Roulette(Population population)
         {
-            double numberDrawn = Constants.random.NextDouble() * 100;
+            double numberDrawn = (Constants.random.NextDouble() * 100);
 
             foreach (Individual ind in population.GetPopulation())
             {
