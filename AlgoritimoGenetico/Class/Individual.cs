@@ -21,7 +21,7 @@ namespace AlgoritimoGenetico.Class
 
             for (int i = 0; i < this.chromosome.Length; i++)
             {
-                this.chromosome[i] = Constants.random.NextDouble() > 0.5f ? true : false;
+                this.chromosome[i] = (Constants.random.NextDouble() >= 0.5f) ? true : false;
             }
         }
 
@@ -92,7 +92,7 @@ namespace AlgoritimoGenetico.Class
 
         public string PrintIndividual()
         {
-            var result = string.Empty;
+            string result = string.Empty;
             result += "Bits: ";
 
             for (int i = chromosome.Length -1; i >= 0; i--)

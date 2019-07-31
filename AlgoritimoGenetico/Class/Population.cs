@@ -43,13 +43,13 @@ namespace AlgoritimoGenetico.Class
             //somatoria de todos os valores de aptidão
             for (int i = 0; i < Constants.sizePopulation; i++)
             {
-                sumFitness += this.population[i].GetFitness();
+                sumFitness += population[i].GetFitness();
             }
 
             for (int i = 0; i < Constants.sizePopulation; i++)
             {
-                this.population[i].SetFitnessPercentage(
-                    (this.population[i].GetFitness() * 100) / sumFitness
+                population[i].SetFitnessPercentage(
+                    (population[i].GetFitness() * 100) / sumFitness
                 );
             }
         }
@@ -71,11 +71,11 @@ namespace AlgoritimoGenetico.Class
                 }
                 else if(i == Constants.sizePopulation - 1)
                 {
-                    population[i].setRoulleteRange(sum, 100);
+                    population[i].setRoulleteRange(sum, 100f);
                 }
                 else
                 {
-                    var newSum = sum + population[i].GetFitnessPercentage();
+                    double newSum = sum + population[i].GetFitnessPercentage();
                     population[i].setRoulleteRange(sum, newSum);
                     sum += population[i].GetFitnessPercentage();
                 }
@@ -95,9 +95,9 @@ namespace AlgoritimoGenetico.Class
         public double GetPopulationAverage()
         {
             double sum = 0;
-            foreach (var ind in population)
+            foreach (Individual ind in population)
             {
-                sum += ind.GetFitnessPercentage();
+                sum += ind.GetFitness();
             }
 
             return sum / Constants.sizePopulation;
