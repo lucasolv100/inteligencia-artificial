@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TSP.GA;
 
 namespace TSP
 {
@@ -36,6 +37,8 @@ namespace TSP
             int x = e.X;
             int y = e.Y;
 
+            TablePoints.addPoint(x, y);
+
             Rectangle rect = new Rectangle(x - 5, y - 5, 10, 10);
             g.DrawEllipse(blackPen, rect);
             g.DrawString((pointCount + 1).ToString(), new Font("Arial Black", 11), Brushes.Black, x + 3, y);
@@ -54,8 +57,38 @@ namespace TSP
             {
                 btnClean.Enabled = true;
             }
+
+            Console.WriteLine(TablePoints.print());
             
         }
+
+        //private void plotLines(Population population, Color color)
+        //{
+        //    Pen penBestIndividual = new Pen(color, 4);
+        //    int genA, genB;
+
+        //    Individual best = population.getBest();
+
+        //    for (int i = 0; i < ConfigurationGA.sizeChromossome; i++)
+        //    {
+        //        if(i < Configuration.sizeChromossome - 1)
+        //        {
+        //            genA = best.getGene(i);
+        //            genB = best.getGene(i + 1);
+        //        }
+        //        else
+        //        {
+        //            genA = best.getGene(i);
+        //            genB = best.getGene(0);
+        //        }
+
+        //        int[] vetA = TablePoints.getCoordinates(genA);
+        //        int[] vetB = TablePoints.getCoordinates(genB);
+
+        //        g.DrawLine(penBestIndividual, vetA[0], vetA[1], vetB[0], vetB[1]);
+        //    }
+
+        //}
 
         //private void plotPoints()
         //{
