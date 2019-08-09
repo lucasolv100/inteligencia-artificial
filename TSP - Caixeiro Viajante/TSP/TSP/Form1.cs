@@ -118,5 +118,18 @@ namespace TSP
                 return number * Fatorial(number - 1);
             }
         }
+
+        private void BtnPopulationGenerate_Click(object sender, EventArgs e)
+        {
+            Individual ind1 = new Individual();
+            Console.WriteLine(ind1);
+            ConfigurationGA.rateMutation = 1;
+
+            GeneticAlgorithm ag = new GeneticAlgorithm();
+            ind1 = ag.Mutation(ind1);
+
+            Console.WriteLine(ind1);
+
+        }
     }
 }

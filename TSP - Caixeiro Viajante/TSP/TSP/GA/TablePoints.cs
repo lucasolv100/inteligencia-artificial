@@ -39,6 +39,7 @@ namespace TSP.GA
             }
 
             //atualizar o tamanho do chromossome
+            ConfigurationGA.sizeChromossome = pointCount;
         }
 
         public static double[,] getTableDist()

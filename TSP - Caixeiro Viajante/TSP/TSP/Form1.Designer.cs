@@ -191,6 +191,7 @@
             this.btnPopulationGenerate.TabIndex = 13;
             this.btnPopulationGenerate.Text = "Gerar População";
             this.btnPopulationGenerate.UseVisualStyleBackColor = false;
+            this.btnPopulationGenerate.Click += new System.EventHandler(this.BtnPopulationGenerate_Click);
             // 
             // gbMutation
             // 
