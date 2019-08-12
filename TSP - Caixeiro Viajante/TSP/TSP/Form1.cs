@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TSP.GA;
+using ZedGraph;
 
 namespace TSP
 {
@@ -17,9 +18,23 @@ namespace TSP
         Graphics g; //desenha elementos na tela
         int count = 0; //verifica a quantidade de pontos na tela
         int pointCount = 0; //sequenciador para impressão do número do ponto na tela
+        Population pop;
+        int evolucoes = 0;
+        int i = 0;
+        int itemp = 0;
+        double bestAux = double.PositiveInfinity;
+
+        private GraphPane paneMedia;
+        private PointPairList mediaPopulation = new PointPairList();
+
         public Form1()
         {
             InitializeComponent();
+            paneMedia = zedMedia.GraphPane;
+            paneMedia.Title.Text = "Média da população";
+            paneMedia.XAxis.Title.Text = "Evolução";
+            paneMedia.YAxis.Title.Text = "Média Fitness";
+            zedMedia.Refresh();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -121,14 +136,74 @@ namespace TSP
 
         private void BtnPopulationGenerate_Click(object sender, EventArgs e)
         {
-            Individual ind1 = new Individual();
-            Console.WriteLine(ind1);
-            ConfigurationGA.rateMutation = 1;
+            ConfigurationGA.sizePopulation = int.Parse(txtPopulationSize.Text);
+            ConfigurationGA.tournamentCompetitors = int.Parse(txtFight.Text);
+            
+            pop = new Population();
+            btnExecute.Enabled = true;
+
 
             GeneticAlgorithm ag = new GeneticAlgorithm();
-            ind1 = ag.Mutation(ind1);
 
-            Console.WriteLine(ind1);
+            Console.WriteLine(ag.Tornament(pop));
+        }
+
+        private void BtnClean_Click(object sender, EventArgs e)
+        {
+            ConfigurationGA.sizePopulation = 0;
+            count = 0;
+            pointCount = 0;
+
+            TablePoints.clear();
+            pop = null;
+            lbQtyCities.Text = "--";
+            lbDifficulty.Text = "0";
+
+            i = 0;
+            itemp = 0;
+            evolucoes = 0;
+            lbEvolucoes.Text = "00";
+
+            btnExecute.Enabled = false;
+            btnPopulationGenerate.Enabled = false;
+            btnClean.Enabled = false;
+            g.Clear(Color.White);
+        }
+
+        private void BtnExecute_Click(object sender, EventArgs e)
+        {
+            btnPopulationGenerate.Enabled = false;
+
+            ConfigurationGA.rateCrossOver = float.Parse(txtCrossOverTax.Text);
+            ConfigurationGA.rateMutation = float.Parse(txtMutationTax.Text);
+            ConfigurationGA.tournamentCompetitors = int.Parse(txtFight.Text);
+            evolucoes += int.Parse(txtEvolution.Text);
+            
+            if (rbNewInd.Checked)
+            {
+                ConfigurationGA.mutationType = Mutation.NewIndividual;
+            }
+            else if (rbPopulation.Checked)
+            {
+                ConfigurationGA.mutationType = Mutation.InPopulation;
+            }
+
+            if (chElitsm.Checked)
+            {
+                ConfigurationGA.elitism = true;
+                ConfigurationGA.sizeElitism = int.Parse(txtQtyElitsm.Text);
+            }
+            else
+            {
+                ConfigurationGA.elitism = false;
+            }
+
+            for (i = itemp; i < evolucoes; i++)
+            {
+                itemp++;
+                lbEvolucoes.Text = i.ToString();
+                lbEvolucoes.Refresh();
+            }
 
         }
     }

@@ -19,7 +19,7 @@ namespace TSP.GA
         public GeneticAlgorithm()
         {
             crossover = CrossOverPMX;
-            //selection = Selection.tornaiment;
+            selection = Tornament;
             CrossOverRate = ConfigurationGA.rateCrossOver;
             MutationRate = ConfigurationGA.rateMutation;
 
@@ -28,14 +28,97 @@ namespace TSP.GA
         public Population ExecuteGA(Population pop)
         {
             //criar a população
-            //avaliar a população
+            Population newPop = new Population();
+            List<Individual> popTemp = new List<Individual>();
+
+            //atribuir individuos a população temporaria
+            for (int i = 0; i < ConfigurationGA.sizePopulation; i++)
+            {
+                popTemp.Add(pop.GetPopulation()[i]);
+            }
+
             //verificar se utilizara elitismo
-            //seleção dos pais
-            //cruzamento dos pais
-            //mutação
+            Individual[] indElitsm = new Individual[ConfigurationGA.sizeElitism];
+
+            if (ConfigurationGA.elitism)
+            {
+                pop.Ordenate();
+                for (int i = 0; i < ConfigurationGA.sizeElitism; i++)
+                {
+                    indElitsm[i] = pop.GetPopulation()[i];
+                }
+            }
+
+            for (int i = 0; i < (ConfigurationGA.sizePopulation / 2); i++)
+            {
+                //seleção dos pais
+                Individual father = selection(pop);
+                Individual mother = selection(pop);
+
+                //cruzamento dos pais
+                double sortCrossNumber = ConfigurationGA.random.NextDouble();
+                if(sortCrossNumber <= CrossOverRate)
+                {
+                    Individual[] children = crossover(father, mother);
+
+                    //mutação
+                    if(ConfigurationGA.mutationType == GA.Mutation.NewIndividual)
+                    {
+                        children[0] = Mutation(children[0]);
+                        children[1] = Mutation(children[1]);
+                    }
+
+                    //repopular os filhos no vetor
+                    children[0].IndexOfArray = father.IndexOfArray;
+                    children[1].IndexOfArray = mother.IndexOfArray;
+
+                    popTemp[father.IndexOfArray] = children[0];
+                    popTemp[mother.IndexOfArray] = children[1];
+                }
+                else
+                {
+                    popTemp[father.IndexOfArray] = father;
+                    popTemp[mother.IndexOfArray] = mother;
+                }
+
+                //apagar individuos velhos e inserir os individuos novos
+                for (int j = 0; j < ConfigurationGA.sizePopulation; j++)
+                {
+                    newPop.SetIndividual(i, popTemp[i]);
+                }
+
+                popTemp = null;
+
+                //aplicação da mutação na nova população
+                if (ConfigurationGA.mutationType == GA.Mutation.InPopulation)
+                {
+                    newPop = MutationPopulation(newPop);
+                }
+
+                //inserindo os individuos do elitismo na nova população
+                if (ConfigurationGA.elitism)
+                {
+                    //avaliar a população
+                    newPop.Evaluate();
+
+                    //ordenar a população
+                    newPop.Ordenate();
+
+                    int startPoint = ConfigurationGA.sizePopulation - ConfigurationGA.sizeElitism;
+                    int count = 0;
+
+                    for (int a = startPoint; a < ConfigurationGA.sizePopulation; a++)
+                    {
+                        newPop.SetIndividual(a, indElitsm[count]);
+                        count++;
+                    }
+                }
+            }
+
             //avaliação da população
-            //inserir na nova população
-            return null;
+            newPop.Evaluate();
+
+            return newPop;
         }
 
         public Individual[] CrossOverPMX(Individual father, Individual mother)
@@ -53,13 +136,13 @@ namespace TSP.GA
             int[] replacement2 = new int[ConfigurationGA.sizeChromossome];
 
             //Seleção dos pontos para cruzamento
-            int firstPoint = ConfigurationGA.random.Next(0, ConfigurationGA.sizeChromossome -1);
+            int firstPoint = ConfigurationGA.random.Next(0, ConfigurationGA.sizeChromossome - 1);
             int secondPoint = ConfigurationGA.random.Next(0, ConfigurationGA.sizeChromossome - 1);
 
-            if(firstPoint == secondPoint)
+            if (firstPoint == secondPoint)
                 secondPoint = ConfigurationGA.random.Next(0, ConfigurationGA.sizeChromossome - 1);
 
-            if(secondPoint < firstPoint)
+            if (secondPoint < firstPoint)
             {
                 int temp = firstPoint;
                 firstPoint = secondPoint;
@@ -139,15 +222,15 @@ namespace TSP.GA
         public Individual Mutation(Individual ind)
         {
             //verifica se vai mutar
-            if(ConfigurationGA.random.NextDouble() <= MutationRate)
+            if (ConfigurationGA.random.NextDouble() <= MutationRate)
             {
                 //mutação tipo swap
-                int genePosition1 = ConfigurationGA.random.Next(0, ConfigurationGA.sizeChromossome -1);
+                int genePosition1 = ConfigurationGA.random.Next(0, ConfigurationGA.sizeChromossome - 1);
                 int genePosition2 = ConfigurationGA.random.Next(0, ConfigurationGA.sizeChromossome - 1);
 
-                if(genePosition1 == genePosition2)
+                if (genePosition1 == genePosition2)
                 {
-                    if(genePosition2 < ConfigurationGA.sizeChromossome -2)
+                    if (genePosition2 < ConfigurationGA.sizeChromossome - 2)
                     {
                         genePosition2++;
                     }
@@ -191,7 +274,31 @@ namespace TSP.GA
 
         public Individual Tornament(Population pop)
         {
-            return null;
+            Individual[] competitors = new Individual[ConfigurationGA.tournamentCompetitors];
+            Individual aux = new Individual();
+
+            aux.SetFitness(float.PositiveInfinity);
+
+            //Seleção de competidores;
+            for (int i = 0; i < ConfigurationGA.tournamentCompetitors; i++)
+            {
+                competitors[i] = new Individual();
+                competitors[i] = pop.GetPopulation()[ConfigurationGA.random.Next(0, ConfigurationGA.sizePopulation - 1)];
+                Console.WriteLine("Competidor: " + competitors[i]);
+            }
+
+            //escolher o vencedor
+
+            for (int i = 0; i < ConfigurationGA.tournamentCompetitors; i++)
+            {
+                if (competitors[i].GetFitness() < aux.GetFitness())
+                {
+                    aux = competitors[i];
+                    aux.CalcFitness();
+                }
+            }
+
+            return aux;
         }
     }
 }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.zedMedia = new ZedGraph.ZedGraphControl();
             this.lbDistance = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lbEvolucoes = new System.Windows.Forms.Label();
@@ -40,7 +40,6 @@
             this.btnExecute = new System.Windows.Forms.Button();
             this.btnPopulationGenerate = new System.Windows.Forms.Button();
             this.gbMutation = new System.Windows.Forms.GroupBox();
-            this.rbGenePopulation = new System.Windows.Forms.RadioButton();
             this.rbPopulation = new System.Windows.Forms.RadioButton();
             this.rbNewInd = new System.Windows.Forms.RadioButton();
             this.txtFight = new System.Windows.Forms.MaskedTextBox();
@@ -66,7 +65,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.zedGraphControl1);
+            this.panel1.Controls.Add(this.zedMedia);
             this.panel1.Controls.Add(this.lbDistance);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lbEvolucoes);
@@ -93,19 +92,19 @@
             this.panel1.Size = new System.Drawing.Size(444, 575);
             this.panel1.TabIndex = 0;
             // 
-            // zedGraphControl1
+            // zedMedia
             // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(15, 365);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.ScrollGrace = 0D;
-            this.zedGraphControl1.ScrollMaxX = 0D;
-            this.zedGraphControl1.ScrollMaxY = 0D;
-            this.zedGraphControl1.ScrollMaxY2 = 0D;
-            this.zedGraphControl1.ScrollMinX = 0D;
-            this.zedGraphControl1.ScrollMinY = 0D;
-            this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(399, 190);
-            this.zedGraphControl1.TabIndex = 21;
+            this.zedMedia.Location = new System.Drawing.Point(15, 365);
+            this.zedMedia.Name = "zedMedia";
+            this.zedMedia.ScrollGrace = 0D;
+            this.zedMedia.ScrollMaxX = 0D;
+            this.zedMedia.ScrollMaxY = 0D;
+            this.zedMedia.ScrollMaxY2 = 0D;
+            this.zedMedia.ScrollMinX = 0D;
+            this.zedMedia.ScrollMinY = 0D;
+            this.zedMedia.ScrollMinY2 = 0D;
+            this.zedMedia.Size = new System.Drawing.Size(399, 190);
+            this.zedMedia.TabIndex = 21;
             // 
             // lbDistance
             // 
@@ -167,6 +166,7 @@
             this.btnClean.TabIndex = 15;
             this.btnClean.Text = "Limpar";
             this.btnClean.UseVisualStyleBackColor = false;
+            this.btnClean.Click += new System.EventHandler(this.BtnClean_Click);
             // 
             // btnExecute
             // 
@@ -179,6 +179,7 @@
             this.btnExecute.TabIndex = 14;
             this.btnExecute.Text = "Executar / Continuar";
             this.btnExecute.UseVisualStyleBackColor = false;
+            this.btnExecute.Click += new System.EventHandler(this.BtnExecute_Click);
             // 
             // btnPopulationGenerate
             // 
@@ -196,7 +197,6 @@
             // gbMutation
             // 
             this.gbMutation.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.gbMutation.Controls.Add(this.rbGenePopulation);
             this.gbMutation.Controls.Add(this.rbPopulation);
             this.gbMutation.Controls.Add(this.rbNewInd);
             this.gbMutation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -206,17 +206,6 @@
             this.gbMutation.TabIndex = 12;
             this.gbMutation.TabStop = false;
             this.gbMutation.Text = "Mutação";
-            // 
-            // rbGenePopulation
-            // 
-            this.rbGenePopulation.AutoSize = true;
-            this.rbGenePopulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbGenePopulation.Location = new System.Drawing.Point(22, 100);
-            this.rbGenePopulation.Name = "rbGenePopulation";
-            this.rbGenePopulation.Size = new System.Drawing.Size(154, 24);
-            this.rbGenePopulation.TabIndex = 2;
-            this.rbGenePopulation.Text = "Genes População";
-            this.rbGenePopulation.UseVisualStyleBackColor = true;
             // 
             // rbPopulation
             // 
@@ -437,7 +426,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private ZedGraph.ZedGraphControl zedGraphControl1;
+        private ZedGraph.ZedGraphControl zedMedia;
         private System.Windows.Forms.Label lbDistance;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbEvolucoes;
@@ -447,7 +436,6 @@
         private System.Windows.Forms.Button btnExecute;
         private System.Windows.Forms.Button btnPopulationGenerate;
         private System.Windows.Forms.GroupBox gbMutation;
-        private System.Windows.Forms.RadioButton rbGenePopulation;
         private System.Windows.Forms.RadioButton rbPopulation;
         private System.Windows.Forms.RadioButton rbNewInd;
         private System.Windows.Forms.MaskedTextBox txtFight;
