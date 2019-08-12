@@ -57,12 +57,12 @@ namespace TSP.GA
 
                 //cruzamento dos pais
                 double sortCrossNumber = ConfigurationGA.random.NextDouble();
-                if(sortCrossNumber <= CrossOverRate)
+                if (sortCrossNumber <= CrossOverRate)
                 {
                     Individual[] children = crossover(father, mother);
 
                     //mutação
-                    if(ConfigurationGA.mutationType == GA.Mutation.NewIndividual)
+                    if (ConfigurationGA.mutationType == GA.Mutation.NewIndividual)
                     {
                         children[0] = Mutation(children[0]);
                         children[1] = Mutation(children[1]);
@@ -80,40 +80,41 @@ namespace TSP.GA
                     popTemp[father.IndexOfArray] = father;
                     popTemp[mother.IndexOfArray] = mother;
                 }
+            }
 
-                //apagar individuos velhos e inserir os individuos novos
-                for (int j = 0; j < ConfigurationGA.sizePopulation; j++)
+            //apagar individuos velhos e inserir os individuos novos
+            for (int j = 0; j < ConfigurationGA.sizePopulation; j++)
+            {
+                newPop.SetIndividual(j, popTemp[j]);
+            }
+
+            popTemp = null;
+
+            //aplicação da mutação na nova população
+            if (ConfigurationGA.mutationType == GA.Mutation.InPopulation)
+            {
+                newPop = MutationPopulation(newPop);
+            }
+
+            //inserindo os individuos do elitismo na nova população
+            if (ConfigurationGA.elitism)
+            {
+                //avaliar a população
+                newPop.Evaluate();
+
+                //ordenar a população
+                newPop.Ordenate();
+
+                int startPoint = ConfigurationGA.sizePopulation - ConfigurationGA.sizeElitism;
+                int count = 0;
+
+                for (int a = startPoint; a < ConfigurationGA.sizePopulation; a++)
                 {
-                    newPop.SetIndividual(i, popTemp[i]);
-                }
-
-                popTemp = null;
-
-                //aplicação da mutação na nova população
-                if (ConfigurationGA.mutationType == GA.Mutation.InPopulation)
-                {
-                    newPop = MutationPopulation(newPop);
-                }
-
-                //inserindo os individuos do elitismo na nova população
-                if (ConfigurationGA.elitism)
-                {
-                    //avaliar a população
-                    newPop.Evaluate();
-
-                    //ordenar a população
-                    newPop.Ordenate();
-
-                    int startPoint = ConfigurationGA.sizePopulation - ConfigurationGA.sizeElitism;
-                    int count = 0;
-
-                    for (int a = startPoint; a < ConfigurationGA.sizePopulation; a++)
-                    {
-                        newPop.SetIndividual(a, indElitsm[count]);
-                        count++;
-                    }
+                    newPop.SetIndividual(a, indElitsm[count]);
+                    count++;
                 }
             }
+
 
             //avaliação da população
             newPop.Evaluate();
@@ -148,9 +149,6 @@ namespace TSP.GA
                 firstPoint = secondPoint;
                 secondPoint = temp;
             }
-
-            Console.WriteLine("Ponto 1: " + firstPoint);
-            Console.WriteLine("Ponto 2: " + secondPoint);
 
             newInd[0] = new Individual();
             newInd[1] = new Individual();
@@ -284,7 +282,6 @@ namespace TSP.GA
             {
                 competitors[i] = new Individual();
                 competitors[i] = pop.GetPopulation()[ConfigurationGA.random.Next(0, ConfigurationGA.sizePopulation - 1)];
-                Console.WriteLine("Competidor: " + competitors[i]);
             }
 
             //escolher o vencedor

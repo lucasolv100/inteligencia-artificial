@@ -73,54 +73,52 @@ namespace TSP
                 btnClean.Enabled = true;
             }
 
-            Console.WriteLine(TablePoints.print());
-            
         }
 
-        //private void plotLines(Population population, Color color)
-        //{
-        //    Pen penBestIndividual = new Pen(color, 4);
-        //    int genA, genB;
+        private void plotLines(Population population, Color color)
+        {
+            Pen penBestIndividual = new Pen(color, 4);
+            int genA, genB;
 
-        //    Individual best = population.getBest();
+            Individual best = population.GetBestIndividual();
 
-        //    for (int i = 0; i < ConfigurationGA.sizeChromossome; i++)
-        //    {
-        //        if(i < Configuration.sizeChromossome - 1)
-        //        {
-        //            genA = best.getGene(i);
-        //            genB = best.getGene(i + 1);
-        //        }
-        //        else
-        //        {
-        //            genA = best.getGene(i);
-        //            genB = best.getGene(0);
-        //        }
+            for (int i = 0; i < ConfigurationGA.sizeChromossome; i++)
+            {
+                if (i < ConfigurationGA.sizeChromossome - 1)
+                {
+                    genA = best.GetGene(i);
+                    genB = best.GetGene(i + 1);
+                }
+                else
+                {
+                    genA = best.GetGene(i);
+                    genB = best.GetGene(0);
+                }
 
-        //        int[] vetA = TablePoints.getCoordinates(genA);
-        //        int[] vetB = TablePoints.getCoordinates(genB);
+                int[] vetA = TablePoints.getCoordinates(genA);
+                int[] vetB = TablePoints.getCoordinates(genB);
 
-        //        g.DrawLine(penBestIndividual, vetA[0], vetA[1], vetB[0], vetB[1]);
-        //    }
+                g.DrawLine(penBestIndividual, vetA[0], vetA[1], vetB[0], vetB[1]);
+            }
 
-        //}
+        }
 
-        //private void plotPoints()
-        //{
-        //    if(TablePoints.pointcount > 0)
-        //    {
-        //        for (int i = 0; i < TablePoints.pointcount; i++)
-        //        {
-        //            Pen blackPen = new Pen(Color.Red, 3);
-        //            int[] coo = TablePoints.getCoordinates(i); //vetor de cordenadas;
-        //            Rectangle rect = new Rectangle(coo[0] - 5, coo[1] - 5, 10, 10);
-        //            g.DrawEllipse(blackPen, rect);
-        //            g.DrawString((i + 1).ToString(), new Font("Arial Black", 11), Brushes.Black, coo[0] + 3, coo[1]);
-        //            g.DrawString("X: " + coo[0].ToString(), new Font("Arial Black", 6), Brushes.Black, coo[0] - 20, coo[1] - 25);
-        //            g.DrawString("Y: " + coo[1].ToString(), new Font("Arial Black", 6), Brushes.Black, coo[0] - 20, coo[1] - 18);
-        //        }
-        //    }
-        //}
+        private void plotPoints()
+        {
+            if (TablePoints.pointCount > 0)
+            {
+                for (int i = 0; i < TablePoints.pointCount; i++)
+                {
+                    Pen blackPen = new Pen(Color.Red, 3);
+                    int[] coo = TablePoints.getCoordinates(i); //vetor de cordenadas;
+                    Rectangle rect = new Rectangle(coo[0] - 5, coo[1] - 5, 10, 10);
+                    g.DrawEllipse(blackPen, rect);
+                    g.DrawString((i + 1).ToString(), new Font("Arial Black", 11), Brushes.Black, coo[0] + 3, coo[1]);
+                    g.DrawString("X: " + coo[0].ToString(), new Font("Arial Black", 6), Brushes.Black, coo[0] - 20, coo[1] - 25);
+                    g.DrawString("Y: " + coo[1].ToString(), new Font("Arial Black", 6), Brushes.Black, coo[0] - 20, coo[1] - 18);
+                }
+            }
+        }
 
         public ulong Fatorial(ulong number)
         {
@@ -168,6 +166,9 @@ namespace TSP
             btnPopulationGenerate.Enabled = false;
             btnClean.Enabled = false;
             g.Clear(Color.White);
+
+            mediaPopulation.Clear();
+            zedMedia.Refresh();
         }
 
         private void BtnExecute_Click(object sender, EventArgs e)
@@ -198,12 +199,45 @@ namespace TSP
                 ConfigurationGA.elitism = false;
             }
 
+            GeneticAlgorithm ag = new GeneticAlgorithm();
+
             for (i = itemp; i < evolucoes; i++)
             {
                 itemp++;
                 lbEvolucoes.Text = i.ToString();
                 lbEvolucoes.Refresh();
+
+                pop = ag.ExecuteGA(pop);
+
+                zedMedia.GraphPane.CurveList.Clear();
+                zedMedia.GraphPane.GraphObjList.Clear();
+
+                double mediaPop = pop.GetAveragePopulation();
+                double bestFitness = pop.GetBestIndividual().GetFitness();
+
+                mediaPopulation.Add(i, mediaPop);
+                lbDistance.Text = bestFitness.ToString();
+                lbDistance.Refresh();
+
+                LineItem media = paneMedia.AddCurve("Média", mediaPopulation, Color.Red, SymbolType.None);
+
+                if(i % 6 == 0 && bestFitness < bestAux)
+                {
+                    bestAux = bestFitness;
+                    g.Clear(Color.White);
+                    plotLines(pop, Color.Blue);
+                    plotPoints();
+                }
+
+                zedMedia.AxisChange();
+                zedMedia.Invalidate();
+                zedMedia.Refresh();
+
             }
+
+            g.Clear(Color.White);
+            plotLines(pop, Color.Blue);
+            plotPoints();
 
         }
     }
