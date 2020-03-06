@@ -10,3 +10,14 @@ D:\Estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP
 D:\Estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.csproj.CopyComplete
 D:\Estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.exe
 D:\Estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.pdb
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\bin\Debug\TSP.exe.config
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\bin\Debug\TSP.exe
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\bin\Debug\TSP.pdb
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\bin\Debug\ZedGraph.dll
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.csprojAssemblyReference.cache
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.Form1.resources
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.Properties.Resources.resources
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.csproj.GenerateResource.cache
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.csproj.CopyComplete
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.exe
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\TSP - Caixeiro Viajante\TSP\TSP\obj\Debug\TSP.pdb

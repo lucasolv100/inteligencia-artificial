@@ -24,3 +24,16 @@ D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGeneti
 D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.pdb
 D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.TesteCrossOver.resources
 D:\Estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.MainScreen.resources
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\AlgoritimoGenetico.exe.config
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\AlgoritimoGenetico.exe
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\AlgoritimoGenetico.pdb
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\bin\Debug\ZedGraph.dll
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csprojAssemblyReference.cache
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.Form1.resources
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.MainScreen.resources
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.Properties.Resources.resources
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.TesteCrossOver.resources
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csproj.GenerateResource.cache
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.csproj.CopyComplete
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.exe
+C:\Users\lucas.souza\Desktop\estudos\inteligencia-artificial\AlgoritimoGenetico\obj\Debug\AlgoritimoGenetico.pdb
